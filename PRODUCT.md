@@ -29,6 +29,7 @@ One personal Windows desktop application called Momentum, launched from an icon 
 - Workout yes/no, overall rating, and separate ratings for legs, chest, back, biceps, triceps, shoulders, core, and forearms.
 - Daily weight, study time and notes, guitar completion and practice time.
 - Separate protein and creatine yes/no checks.
+- Optional sports and travel checks live alongside guitar; any of those activities replenishes Growth World foliage.
 - GitHub-style interactive calendar, charts, history, goals, and data-driven insights.
 - Server-side Groq motivation; key lives only in git-ignored .env.
 - Persistent local SQLite storage, export/import, no fabricated history.
@@ -53,3 +54,11 @@ The provided GitHub repository was empty when cloned. There is no existing brand
 ## Open Decisions and Assumptions
 
 User explicitly rejected a light theme and delegated the visual direction: dark, high-tech, visually appealing. Default goals are editable starting values, not personalized nutritional advice.
+
+## Check-in-driven Growth World
+
+The user explicitly requested that the illustrative garden become a persistent visual record: green streaks grow its size, red resets the growth streak and pauses size until a minimum streak returns, gym sessions grow branches, and guitar/sports/travel keep leaves lush. Preserve the existing rest of the app.
+
+Implementation rules: three consecutive calendar green days unlock growth; the third and subsequent green days earn one cumulative growth point each. A red or a calendar gap resets the consecutive streak but never removes earned size or branches. Three workout check-ins earn a permanent branch. Any guitar/sports/travel yes restores 28 vitality points up to 100. Three explicitly logged days with all three activities no are a grace period; further such days reduce vitality by 12 to a floor of 15. Unknown answers and missing dates never count as no. Vitality begins at 55. These are motivational game rules, not health judgments.
+
+Stages progress Seed → Sprout (1 point) → Sapling (6) → Young tree (20) → Full-grown tree (45). Scroll changes the camera only. A history control can inspect saved snapshots; any future-tree preview is clearly marked as illustrative, with no database writes. Display the rules, current points, streak/lock, branches, vitality, and actionable next steps. Support pause, reduced motion, static fallback, and render only when needed.

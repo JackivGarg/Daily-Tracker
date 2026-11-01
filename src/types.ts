@@ -23,6 +23,8 @@ export interface Entry {
   guitarDone: boolean | null;
   guitarMinutes: number | null;
   guitarNote: string;
+  sportsDone: boolean | null;
+  travelDone: boolean | null;
   proteinTaken: boolean | null;
   creatineTaken: boolean | null;
   note: string;

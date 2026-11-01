@@ -71,7 +71,7 @@ export function emptyEntry(date) {
   return {
     date, status: null, meals: [], weight: null, workoutDone: null,
     muscles: {}, workoutRating: null, studyMinutes: null, studyNote: '',
-    guitarDone: null, guitarMinutes: null, guitarNote: '',
+    guitarDone: null, guitarMinutes: null, guitarNote: '', sportsDone: null, travelDone: null,
     proteinTaken: null, creatineTaken: null, note: '', updatedAt: null,
   };
 }
@@ -144,6 +144,8 @@ export function validateEntry(date, patch, current = emptyEntry(date), options =
     guitarDone: nullableBoolean(merged.guitarDone, 'Guitar practiced'),
     guitarMinutes: number(merged.guitarMinutes, 'Guitar minutes', 0, 1440, true, true),
     guitarNote: text(merged.guitarNote, 'Guitar note', 4000),
+    sportsDone: nullableBoolean(merged.sportsDone, 'Sports completed'),
+    travelDone: nullableBoolean(merged.travelDone, 'Travel completed'),
     proteinTaken: nullableBoolean(merged.proteinTaken, 'Protein taken'),
     creatineTaken: nullableBoolean(merged.creatineTaken, 'Creatine taken'),
     note: text(merged.note, 'Daily reflection', 8000),

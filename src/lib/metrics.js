@@ -28,7 +28,7 @@ export function emptyEntry(date) {
   asUTC(date);
   return {
     date, status: null, meals: [], weight: null, workoutDone: null, muscles: {}, workoutRating: null,
-    studyMinutes: null, studyNote: '', guitarDone: null, guitarMinutes: null, guitarNote: '',
+    studyMinutes: null, studyNote: '', guitarDone: null, guitarMinutes: null, guitarNote: '', sportsDone: null, travelDone: null,
     proteinTaken: null, creatineTaken: null, note: '', updatedAt: '',
   };
 }
@@ -54,6 +54,7 @@ function hasData(entry) {
     || entry.workoutDone != null || Object.keys(entry.muscles).length > 0 || entry.workoutRating != null
     || entry.studyMinutes != null || Boolean(entry.studyNote.trim())
     || entry.guitarDone != null || entry.guitarMinutes != null || Boolean(entry.guitarNote.trim())
+    || entry.sportsDone != null || entry.travelDone != null
     || entry.proteinTaken != null || entry.creatineTaken != null || Boolean(entry.note.trim());
 }
 

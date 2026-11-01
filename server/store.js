@@ -1,7 +1,13 @@
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { DEFAULT_SETTINGS } from './model.js';
+import { DEFAULT_SETTINGS, emptyEntry } from './model.js';
+
+function readEntry(payload) {
+  const entry = JSON.parse(payload);
+  // Legacy records remain untouched on disk; newly introduced checks are unknown.
+  return { ...emptyEntry(entry.date), ...entry };
+}
 
 export function createStore(filename) {
   if (filename !== ':memory:') mkdirSync(dirname(filename), { recursive: true });
@@ -20,8 +26,8 @@ export function createStore(filename) {
   const upsert = db.prepare('INSERT INTO entries(date,payload) VALUES(?,?) ON CONFLICT(date) DO UPDATE SET payload=excluded.payload');
   const store = {
     settings: () => JSON.parse(getSettings.get().payload),
-    entries: () => allEntries.all().map((row) => JSON.parse(row.payload)),
-    entry: (date) => { const row = getEntry.get(date); return row ? JSON.parse(row.payload) : null; },
+    entries: () => allEntries.all().map((row) => readEntry(row.payload)),
+    entry: (date) => { const row = getEntry.get(date); return row ? readEntry(row.payload) : null; },
     saveSettings: (settings) => { setSettings.run(JSON.stringify(settings)); return settings; },
     saveEntry: (entry) => { upsert.run(entry.date, JSON.stringify(entry)); return entry; },
     import: (settings, entries) => {

@@ -19,6 +19,15 @@ The daily check-in is split across Your Day, Nutrition, Training, Body & Weight,
 - Groq-powered reflections on request, with a local fallback when offline.
 - JSON backup export/import. Import validates all records before any changes and merges by date.
 - Separate 3D growth page with reversible native scroll, four camera chapters, reduced-motion support, and WebGL fallback.
+- Growth World now uses your actual check-ins for size, branches, and foliage. Scroll explores the plant; it does not earn progress.
+
+### How Growth World changes
+
+Three consecutive green days unlock growth. The third green day and each subsequent consecutive green day earn one retained growth point. Red resets the streak and pauses growth until another three-day green streak; earned size stays. Stages unlock at 1, 6, 20, and 45 points, from sprout to a full-grown tree.
+
+Every three logged workouts add a permanent branch. A guitar, sports, or travel yes adds 28 foliage vitality (maximum 100). After three explicitly logged days with all three marked no, further such days reduce vitality by 12 (minimum 15), producing dry, drooping leaves. Any of those activities can restore them. Missing records and unanswered fields are unknown, never automatic no. Starting vitality is 55.
+
+Sports and travel checks are on the existing Guitar check-in page. Garden history and previews are read-only; changing a real entry recalculates the garden without double-counting.
 
 Tracking begins **1 November 2026** in **Asia/Kolkata**. There are no sample entries in your database. Starting goals are editable suggestions to replace with your own targets.
 

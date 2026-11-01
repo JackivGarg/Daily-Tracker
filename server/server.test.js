@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { once } from 'node:events';
 import { createApp } from './app.js';
+import { createStore } from './store.js';
 import { DEFAULT_SETTINGS, emptyEntry, todayInIndia, validateEntry, validDate } from './model.js';
 
 const NOW = new Date('2026-11-03T06:00:00Z');
@@ -176,4 +177,64 @@ test('coach remains useful when Groq is unavailable', async (t) => {
   assert.equal(coach.body.source, 'local');
   assert.match(coach.body.text, /first check-in/);
   assert.ok(!JSON.stringify(coach.body).includes('credential'));
+});
+
+test('legacy stored entries expose new activity checks as unknown without losing history', () => {
+  const store = createStore(':memory:');
+  try {
+    const legacy = { ...emptyEntry('2026-11-01'), status: 'green', guitarDone: false, note: 'Existing reflection' };
+    delete legacy.sportsDone;
+    delete legacy.travelDone;
+    store.saveEntry(legacy);
+    const loaded = store.entry('2026-11-01');
+    assert.equal(loaded.sportsDone, null);
+    assert.equal(loaded.travelDone, null);
+    assert.equal(loaded.guitarDone, false);
+    assert.equal(loaded.note, 'Existing reflection');
+    assert.deepEqual(store.entries(), [loaded]);
+  } finally { store.close(); }
+});
+
+test('sports and travel survive restart and export while legacy backups remain compatible', async (t) => {
+  const api = await fixture(t);
+  const legacy = { ...emptyEntry('2026-11-01'), status: 'green' };
+  delete legacy.sportsDone;
+  delete legacy.travelDone;
+  const imported = await api.request('/api/import', { method: 'POST', body: {
+    version: 1, settings: DEFAULT_SETTINGS, entries: [legacy],
+  } });
+  assert.equal(imported.status, 200);
+  assert.equal(imported.body.entries[0].sportsDone, null);
+  assert.equal(imported.body.entries[0].travelDone, null);
+  const saved = await api.request('/api/entries/2026-11-01', { method: 'PATCH', body: { sportsDone: false, travelDone: true } });
+  assert.equal(saved.status, 200);
+  assert.equal(saved.body.status, 'green');
+  await api.reopen();
+  const backup = await api.request('/api/export');
+  assert.equal(backup.body.entries[0].sportsDone, false);
+  assert.equal(backup.body.entries[0].travelDone, true);
+  const roundTrip = await api.request('/api/import', { method: 'POST', body: backup.body });
+  assert.equal(roundTrip.status, 200);
+  assert.equal(roundTrip.body.entries[0].sportsDone, false);
+  assert.equal(roundTrip.body.entries[0].travelDone, true);
+});
+
+test('invalid activity checks reject partial updates and whole imports atomically', async (t) => {
+  const api = await fixture(t);
+  await api.request('/api/entries/2026-11-01', { method: 'PATCH', body: { sportsDone: true, travelDone: false, note: 'Keep this' } });
+  const before = await api.request('/api/bootstrap');
+  for (const invalid of [{ sportsDone: 'yes' }, { travelDone: 1 }, { sportsDone: [] }]) {
+    const response = await api.request('/api/entries/2026-11-01', { method: 'PATCH', body: { status: 'red', ...invalid } });
+    assert.equal(response.status, 400);
+    assert.match(response.body.error, /true, false, or null/);
+  }
+  const imported = await api.request('/api/import', { method: 'POST', body: {
+    settings: { ...DEFAULT_SETTINGS, name: 'Must not change' },
+    entries: [
+      { ...emptyEntry('2026-11-02'), sportsDone: true },
+      { ...emptyEntry('2026-11-03'), travelDone: 'no' },
+    ],
+  } });
+  assert.equal(imported.status, 400);
+  assert.deepEqual((await api.request('/api/bootstrap')).body, before.body);
 });

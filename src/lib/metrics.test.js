@@ -93,3 +93,16 @@ test('insights use only actual logs and describe partial nutrition honestly', ()
   assert.match(nutrition.body, /Partial meal logs/);
   assert.equal(insights.some(item => item.title.includes('workout')), false);
 });
+
+test('new activity checks start unknown and explicit activity-only check-ins count as recorded', () => {
+  const empty = emptyEntry('2026-11-01');
+  assert.equal(empty.sportsDone, null);
+  assert.equal(empty.travelDone, null);
+  assert.equal(computeSummary([empty], '2026-11-01').loggedDays, 0);
+  assert.equal(computeSummary([{ ...empty, sportsDone: false }], '2026-11-01').loggedDays, 1);
+  assert.equal(computeSummary([{ ...empty, travelDone: true }], '2026-11-01').loggedDays, 1);
+  const legacy = { ...empty };
+  delete legacy.sportsDone;
+  delete legacy.travelDone;
+  assert.equal(computeSummary([legacy], '2026-11-01').loggedDays, 0);
+});
