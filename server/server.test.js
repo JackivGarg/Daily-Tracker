@@ -157,6 +157,10 @@ test('coach sends only structured totals and never exposes the API key', async (
   assert.ok(!JSON.stringify(coach.body).includes(key));
   assert.equal(request.options.headers.Authorization, `Bearer ${key}`);
   assert.equal(request.url, 'https://api.groq.com/openai/v1/chat/completions');
+  const upstreamBody = JSON.parse(request.options.body);
+  assert.equal(upstreamBody.model, 'openai/gpt-oss-120b');
+  assert.equal(upstreamBody.reasoning_effort, 'low');
+  assert.equal(upstreamBody.include_reasoning, false);
   assert.ok(!request.options.body.includes('Private thought'));
   assert.ok(!request.options.body.includes('Private study'));
   assert.ok(!request.options.body.includes('Private meal name'));
