@@ -58,7 +58,7 @@ npm run test:ui
 npm run package:desktop
 ```
 
-Packaging produces a per-user Windows x64 installer and a portable executable in `release/`. Development UI smoke tests use an isolated temporary database and the system Chrome executable. No tests write sample data into the installed app's profile.
+Packaging produces a per-user Windows x64 installer in `release/`. Development UI smoke tests use an isolated temporary database and the system Chrome executable. No tests write sample data into the installed app's profile.
 
 The Electron renderer is sandboxed, has no Node integration, rejects external navigation/new windows and browser permissions, and uses a content security policy. Its internal API binds only to a random loopback port while the app is open. Nothing is exposed on your network, and closing the application stops that service.
 

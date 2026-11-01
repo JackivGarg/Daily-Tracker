@@ -9,7 +9,7 @@
     "start": "node server/index.js",
     "test": "node --test server/*.test.js src/lib/*.test.js desktop/*.test.cjs",
     "desktop": "electron .",
-    "package:desktop": "npm run build && electron-builder --config desktop/electron-builder.cjs --win nsis portable --x64",
+    "package:desktop": "npm run build && electron-builder --config desktop/electron-builder.cjs --win nsis --x64",
     "test:ui": "node scripts/ui-smoke.mjs"
   },
   "dependencies": {

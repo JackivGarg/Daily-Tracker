@@ -27,7 +27,6 @@ module.exports = {
     icon: "desktop/assets/momentum.ico",
     target: [
       { target: "nsis", arch: ["x64"] },
-      { target: "portable", arch: ["x64"] },
     ],
     requestedExecutionLevel: "asInvoker",
   },
@@ -42,6 +41,5 @@ module.exports = {
     runAfterFinish: false,
     artifactName: "Momentum-Setup-${version}.${ext}",
   },
-  portable: { artifactName: "Momentum-Portable-${version}.${ext}" },
   publish: null,
 };
