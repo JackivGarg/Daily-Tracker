@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T06:20:05.138Z",
+  "title": "Design System: Momentum",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Botanical Lime",
+        "canonical": "#c0ee82",
+        "tonalRamp": [
+          "oklch(15% 0.02 130)",
+          "oklch(27% 0.05 130)",
+          "oklch(39% 0.09 130)",
+          "oklch(51% 0.13 130)",
+          "oklch(63% 0.16 130)",
+          "oklch(75% 0.15 130)",
+          "oklch(87% 0.10 130)",
+          "oklch(95% 0.04 130)"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Charcoal Green Canvas",
+        "canonical": "#0c100e",
+        "tonalRamp": [
+          "oklch(15% 0.008 155)",
+          "oklch(27% 0.012 155)",
+          "oklch(39% 0.016 155)",
+          "oklch(51% 0.02 155)",
+          "oklch(63% 0.02 155)",
+          "oklch(75% 0.016 155)",
+          "oklch(87% 0.012 155)",
+          "oklch(95% 0.006 155)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Matte Graphite Panel",
+        "canonical": "#151b17",
+        "tonalRamp": [
+          "oklch(15% 0.01 145)",
+          "oklch(27% 0.016 145)",
+          "oklch(39% 0.022 145)",
+          "oklch(51% 0.028 145)",
+          "oklch(63% 0.028 145)",
+          "oklch(75% 0.022 145)",
+          "oklch(87% 0.016 145)",
+          "oklch(95% 0.008 145)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Raised Forest Graphite",
+        "canonical": "#1c241e",
+        "tonalRamp": [
+          "oklch(15% 0.012 145)",
+          "oklch(27% 0.02 145)",
+          "oklch(39% 0.028 145)",
+          "oklch(51% 0.036 145)",
+          "oklch(63% 0.036 145)",
+          "oklch(75% 0.028 145)",
+          "oklch(87% 0.02 145)",
+          "oklch(95% 0.01 145)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Forest Divider",
+        "canonical": "#2a342d",
+        "tonalRamp": [
+          "oklch(15% 0.01 150)",
+          "oklch(27% 0.02 150)",
+          "oklch(39% 0.028 150)",
+          "oklch(51% 0.036 150)",
+          "oklch(63% 0.036 150)",
+          "oklch(75% 0.028 150)",
+          "oklch(87% 0.02 150)",
+          "oklch(95% 0.01 150)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Soft Botanical White",
+        "canonical": "#eef4e9",
+        "tonalRamp": [
+          "oklch(15% 0.006 130)",
+          "oklch(27% 0.01 130)",
+          "oklch(39% 0.014 130)",
+          "oklch(51% 0.018 130)",
+          "oklch(63% 0.018 130)",
+          "oklch(75% 0.014 130)",
+          "oklch(87% 0.01 130)",
+          "oklch(95% 0.006 130)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Sage Secondary Text",
+        "canonical": "#a1afa4",
+        "tonalRamp": [
+          "oklch(15% 0.008 150)",
+          "oklch(27% 0.014 150)",
+          "oklch(39% 0.02 150)",
+          "oklch(51% 0.026 150)",
+          "oklch(63% 0.026 150)",
+          "oklch(75% 0.02 150)",
+          "oklch(87% 0.014 150)",
+          "oklch(95% 0.008 150)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Personal Green Reflection",
+        "canonical": "#8acb97",
+        "tonalRamp": [
+          "oklch(15% 0.02 150)",
+          "oklch(27% 0.04 150)",
+          "oklch(39% 0.07 150)",
+          "oklch(51% 0.10 150)",
+          "oklch(63% 0.12 150)",
+          "oklch(75% 0.11 150)",
+          "oklch(87% 0.07 150)",
+          "oklch(95% 0.03 150)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Personal Coral Reflection",
+        "canonical": "#f28b89",
+        "tonalRamp": [
+          "oklch(15% 0.02 24)",
+          "oklch(27% 0.05 24)",
+          "oklch(39% 0.08 24)",
+          "oklch(51% 0.12 24)",
+          "oklch(63% 0.15 24)",
+          "oklch(75% 0.13 24)",
+          "oklch(87% 0.08 24)",
+          "oklch(95% 0.03 24)"
+        ]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Quiet Data Blue",
+        "canonical": "#8abadd",
+        "tonalRamp": [
+          "oklch(15% 0.02 240)",
+          "oklch(27% 0.04 240)",
+          "oklch(39% 0.06 240)",
+          "oklch(51% 0.08 240)",
+          "oklch(63% 0.10 240)",
+          "oklch(75% 0.09 240)",
+          "oklch(87% 0.06 240)",
+          "oklch(95% 0.025 240)"
+        ]
+      },
+      "peach": {
+        "role": "tertiary",
+        "displayName": "Warm Practice Amber",
+        "canonical": "#dfbe79",
+        "tonalRamp": [
+          "oklch(15% 0.02 85)",
+          "oklch(27% 0.04 85)",
+          "oklch(39% 0.07 85)",
+          "oklch(51% 0.10 85)",
+          "oklch(63% 0.12 85)",
+          "oklch(75% 0.11 85)",
+          "oklch(87% 0.07 85)",
+          "oklch(95% 0.03 85)"
+        ]
+      },
+      "purple": {
+        "role": "tertiary",
+        "displayName": "Muted Focus Lilac",
+        "canonical": "#bdabdc",
+        "tonalRamp": [
+          "oklch(15% 0.015 300)",
+          "oklch(27% 0.03 300)",
+          "oklch(39% 0.05 300)",
+          "oklch(51% 0.07 300)",
+          "oklch(63% 0.09 300)",
+          "oklch(75% 0.08 300)",
+          "oklch(87% 0.05 300)",
+          "oklch(95% 0.02 300)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "page-heading": {
+        "displayName": "Manrope Page Heading",
+        "purpose": "Manrope Variable at 29px, weight 650, 1.3 line-height and -0.035em tracking carries routed page identity."
+      },
+      "section-heading": {
+        "displayName": "Manrope Section Heading",
+        "purpose": "Manrope Variable at 17px, weight 650, 1.5 line-height and -0.02em tracking labels form sections; dense dashboard panels use 14px headings."
+      },
+      "body": {
+        "displayName": "DM Sans Working Text",
+        "purpose": "Self-hosted DM Sans Variable carries labels, controls and supporting copy; paragraph line-height is 1.65."
+      },
+      "growth-display": {
+        "displayName": "Manrope Spatial Display",
+        "purpose": "Growth World uses clamp(36px, 4vw, 60px), weight 600 and 1.12 line-height; this scale belongs to the separate Experience route."
+      },
+      "data": {
+        "displayName": "Tabular Measurements",
+        "purpose": "Metric values and logged measurements use font-variant-numeric: tabular-nums so changing entries keep stable alignment."
+      }
+    },
+    "shadows": [
+      {
+        "name": "toast-overlay",
+        "value": "0 12px 35px #0005",
+        "purpose": "Floats a short-lived save/import confirmation over the working surface."
+      },
+      {
+        "name": "save-bar",
+        "value": "0 8px 28px #0003",
+        "purpose": "Source save-bar vocabulary. Routed check-in pages explicitly override this shadow to none and use a static save action."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-state",
+        "value": "background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
+        "purpose": "Shared control hover and selection transitions."
+      },
+      {
+        "name": "field-state",
+        "value": "border-color 0.2s",
+        "purpose": "Inputs shift border color while keeping content in place."
+      },
+      {
+        "name": "garden-readiness",
+        "value": "opacity 0.4s",
+        "purpose": "Reveals the real WebGL canvas when geometry and materials are ready."
+      },
+      {
+        "name": "progress-fill",
+        "value": "width 0.4s ease",
+        "purpose": "Smoothly resolves a measured progress value after recorded data changes."
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "transform 0.25s ease",
+        "purpose": "Moves the mobile navigation drawer at the 760px layout breakpoint."
+      },
+      {
+        "name": "loading-indicator",
+        "value": "spin 1.2s linear infinite",
+        "purpose": "A purposeful loading state while an explicit operation is pending."
+      },
+      {
+        "name": "garden-camera-damping",
+        "value": "THREE.MathUtils.damp(smooth, exact, 5.2, elapsed)",
+        "purpose": "Visual camera progress follows one exact native-scroll state; semantic navigation uses exact progress."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Removes canvas ambient motion and CSS transitions; preserves composed chapter states and complete semantic controls."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-working-surface",
+        "value": "1450px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1200px"
+      },
+      {
+        "name": "growth-tablet",
+        "value": "1050px"
+      },
+      {
+        "name": "tablet-working-surface",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "760px"
+      },
+      {
+        "name": "growth-mobile",
+        "value": "720px"
+      },
+      {
+        "name": "compact-phone",
+        "value": "580px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "description": "Botanical lime identifies the main action, such as saving a check-in.",
+      "html": "<button class=\"ds-primary\" type=\"button\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m20 6-11 11-5-5\"/></svg>Save check-in</button>",
+      "css": ".ds-primary{font-family:'DM Sans Variable',sans-serif;font-size:11px;font-weight:600;line-height:1.4;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:10px 15px;border:1px solid transparent;border-radius:7px;background:var(--accent,#c0ee82);color:#1b2917;cursor:pointer;transition:background .2s ease,transform .2s ease}.ds-primary:hover{background:#d0ffa0;transform:translateY(-1px)}.ds-primary:active{transform:translateY(0)}.ds-primary:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-primary:disabled{opacity:.4;cursor:not-allowed}.ds-primary svg{flex-shrink:0}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}.ds-primary:hover{transform:none}}"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "description": "A quiet forest surface supports secondary actions without competing with the primary action.",
+      "html": "<button class=\"ds-secondary\" type=\"button\">Export backup</button>",
+      "css": ".ds-secondary{font-family:'DM Sans Variable',sans-serif;font-size:11px;font-weight:600;line-height:1.4;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:10px 15px;border:1px solid #364433;border-radius:7px;background:#202b21;color:#d8e7d1;cursor:pointer;transition:background .2s ease,border-color .2s ease}.ds-secondary:hover{background:#2e3c2a;border-color:#6b815b}.ds-secondary:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-secondary:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}}"
+    },
+    {
+      "name": "Subtle Action",
+      "kind": "button",
+      "description": "Text and a transparent background keep optional actions visually subordinate.",
+      "html": "<button class=\"ds-subtle\" type=\"button\">Cancel</button>",
+      "css": ".ds-subtle{font-family:'DM Sans Variable',sans-serif;font-size:11px;font-weight:600;line-height:1.4;min-height:38px;padding:10px 15px;border:1px solid transparent;border-radius:7px;background:none;color:#b1bdb0;cursor:pointer;transition:background .2s ease,color .2s ease}.ds-subtle:hover{background:#263024}.ds-subtle:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-subtle:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-subtle{transition:none}}"
+    },
+    {
+      "name": "Labeled Measurement Input",
+      "kind": "input",
+      "description": "A persistent label, optional-unit context and a bright focus outline make measurements easy to enter.",
+      "html": "<label class=\"ds-field\"><span>Weight <span class=\"ds-optional\">optional · kg</span></span><input class=\"ds-input\" type=\"number\" min=\"1\" max=\"1000\" step=\"0.1\" placeholder=\"Your weight\"/></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:8px;max-width:270px;font-family:'DM Sans Variable',sans-serif;font-size:12px;line-height:1.5;color:#cedbc6}.ds-optional{font-size:10px;color:#8e9f84;margin-left:4px}.ds-input{font:inherit;font-size:13px;color:var(--text,#eef4e9);background:#101612;border:1px solid #344237;border-radius:7px;padding:11px 12px;min-width:0;caret-color:var(--accent,#c0ee82);transition:border-color .2s}.ds-input::placeholder{color:#89988d;opacity:1}.ds-input:hover{border-color:#5a6e5b}.ds-input:focus{border-color:var(--accent,#c0ee82)}.ds-input:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-input:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-input{transition:none}}"
+    },
+    {
+      "name": "Sidebar Navigation",
+      "kind": "nav",
+      "description": "Familiar routed navigation uses a lime foreground, forest selection surface and a small active-state dot.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a class=\"ds-nav-link ds-nav-active\" href=\"/dashboard\" aria-current=\"page\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/></svg>Dashboard<span class=\"ds-nav-dot\"></span></a><a class=\"ds-nav-link\" href=\"/insights\">Insights</a></nav>",
+      "css": ".ds-nav{display:flex;flex-direction:column;gap:5px;max-width:224px;padding:17px;background:#0a0d0b;font-family:'DM Sans Variable',sans-serif}.ds-nav-link{display:flex;align-items:center;gap:11px;height:44px;padding:0 13px;border:0;border-radius:7px;font-size:12px;font-weight:500;color:#9ba99e;text-decoration:none;transition:background .2s ease,color .2s ease}.ds-nav-link:hover{background:#19231b;color:var(--text,#eef4e9)}.ds-nav-active{background:#25351f;color:var(--accent,#c0ee82)}.ds-nav-dot{width:5px;height:5px;border-radius:50%;background:var(--accent,#c0ee82);margin-left:auto}.ds-nav-link:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-nav-link{transition:none}}"
+    },
+    {
+      "name": "Muscle Selection Chip",
+      "kind": "chip",
+      "description": "Compact rectangular chips select muscle groups before their individual ratings appear.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip ds-chip-selected\" type=\"button\" aria-pressed=\"true\">Legs</button><button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">Chest</button><button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">Core</button></div>",
+      "css": ".ds-chips{display:flex;gap:8px;flex-wrap:wrap;font-family:'DM Sans Variable',sans-serif}.ds-chip{font:inherit;font-size:11px;padding:9px 12px;background:#172116;border:1px solid #3a4e32;border-radius:6px;color:#bfccaf;cursor:pointer;transition:background .2s ease,border-color .2s ease}.ds-chip-selected{background:#324728;border-color:#74965b;color:#e6f6da}.ds-chip:hover{border-color:#8cae70}.ds-chip:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-chip:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-chip{transition:none}}"
+    },
+    {
+      "name": "Working Panel",
+      "kind": "card",
+      "description": "A one-pixel boundary and a matte surface group meaningful dashboard content without decorative elevation.",
+      "html": "<section class=\"ds-panel\"><h2>Training balance</h2><p>Muscle-group ratings appear after you log a workout.</p></section>",
+      "css": ".ds-panel{max-width:420px;background:var(--panel,#151b17);border:1px solid var(--border,#2a342d);border-radius:12px;padding:22px;color:var(--text,#eef4e9);font-family:'DM Sans Variable',sans-serif}.ds-panel h2{font-family:'Manrope Variable',sans-serif;font-size:14px;font-weight:650;letter-spacing:-.02em;line-height:1.5;margin:0}.ds-panel p{font-size:10px;line-height:1.5;color:#99a797;margin:5px 0 0}"
+    },
+    {
+      "name": "Explicit Yes / No Check",
+      "kind": "custom",
+      "description": "Protein, creatine and practice checks retain an unanswered state until the user chooses an answer.",
+      "html": "<div class=\"ds-answer-group\" role=\"group\" aria-label=\"Did you take creatine?\"><button class=\"ds-answer ds-answer-yes\" type=\"button\" aria-pressed=\"true\">Yes</button><button class=\"ds-answer\" type=\"button\" aria-pressed=\"false\">No</button></div>",
+      "css": ".ds-answer-group{display:flex;align-items:center;gap:5px;font-family:'DM Sans Variable',sans-serif}.ds-answer{font:inherit;font-size:11px;min-height:33px;padding:7px 11px;border:1px solid #3c4e35;background:#152015;border-radius:5px;color:var(--text,#eef4e9);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}.ds-answer:hover{background:#2c4025}.ds-answer-yes{background:#bddf98;border-color:#bddf98;color:#1e3314}.ds-answer-no{background:#4d3430;border-color:#b57e72;color:#ffccc0}.ds-answer:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-answer:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-answer{transition:none}}"
+    },
+    {
+      "name": "Personal Day Reflection",
+      "kind": "custom",
+      "description": "Red and green are explicit personal choices. A written label and meaning accompany each color.",
+      "html": "<button class=\"ds-reflection ds-reflection-green\" type=\"button\" aria-pressed=\"true\"><strong>Green day</strong><p>A day that felt aligned with my priorities.</p><span class=\"ds-reflection-check\" aria-hidden=\"true\"><svg width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"m20 6-11 11-5-5\"/></svg></span></button>",
+      "css": ".ds-reflection{position:relative;max-width:360px;text-align:left;background:#111813;border:1px solid #344332;border-radius:9px;padding:18px 30px 18px 16px;color:var(--text,#eef4e9);font-family:'DM Sans Variable',sans-serif;cursor:pointer;transition:background .2s ease,border-color .2s ease}.ds-reflection strong{font-size:12px;font-weight:600}.ds-reflection p{font-size:11px;line-height:1.55;color:#a2b197;margin:10px 0 0 19px}.ds-reflection-green{background:#273d21;border-color:#9ac974}.ds-reflection-red{background:#382723;border-color:#db9790}.ds-reflection:hover{border-color:#8ca778}.ds-reflection-check{position:absolute;right:12px;top:18px;display:grid;place-items:center;width:15px;height:15px;border:1px solid currentColor;border-radius:50%;color:#e7fada}.ds-reflection:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:4px}.ds-reflection:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-reflection{transition:none}}"
+    },
+    {
+      "name": "Contribution Day Cells",
+      "kind": "custom",
+      "description": "The compact calendar distinguishes unrecorded, green, red and today states; accessible names carry date and meaning.",
+      "html": "<div class=\"ds-calendar\" role=\"group\" aria-label=\"Personal day colors\"><button class=\"ds-day\" aria-label=\"1 November 2026: unrecorded\"></button><button class=\"ds-day ds-day-green\" aria-label=\"2 November 2026: green day\"></button><button class=\"ds-day ds-day-red\" aria-label=\"3 November 2026: red day\"></button><button class=\"ds-day ds-day-today\" aria-label=\"Today: unrecorded\"></button></div>",
+      "css": ".ds-calendar{display:grid;grid-template-columns:repeat(4,14px);gap:3px;padding:4px;background:var(--panel,#151b17)}.ds-day{position:relative;padding:0;width:14px;height:14px;min-height:7px;border:0;border-radius:2px;background:#2b382b;cursor:pointer;transition:background .2s ease,transform .2s ease}.ds-day-green{background:#a0d17b}.ds-day-red{background:#e88882}.ds-day-today{background:#4b623b;outline:1px solid var(--accent,#c0ee82);outline-offset:2px}.ds-day:hover:not(:disabled){background:#8da678;transform:scale(1.25);z-index:1}.ds-day:focus-visible{outline:2px solid var(--accent,#c0ee82);outline-offset:2px;z-index:2}.ds-day:disabled{opacity:.4;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-day{transition:none}.ds-day:hover:not(:disabled){transform:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A personal growth observatory",
+    "overview": "The user chose a dark, high-tech interface and delegated visual decisions. The working dashboard uses precise familiar controls; the separate Growth World is a spatial experience. Code-first implementation.\n\nA personal growth observatory: graphite surfaces, botanical lime, sharp data typography, restrained ceramic/metal 3D forms. Seven grounded sources considered: contemporary music practice tools; running-club identity systems; university study publications; botanical research exhibitions; industrial design monographs; modern astronomical data displays; performance training journals. Botanical research exhibitions supply the growth mechanism and color relationships, translated to the user's dark high-tech commitment.",
+    "keyCharacteristics": [
+      "Unrecorded values show dashes, not artificial zeros.",
+      "No seeded progress.",
+      "Empty calendar remains interactive.",
+      "Entry saving reports pending, failure, and success.",
+      "Red/green names and definitions are editable and colors have text equivalents.",
+      "All fields labeled and optional; choice groups are accessible buttons.",
+      "Export and import keep personal records portable."
+    ],
+    "rules": [],
+    "dos": [],
+    "donts": []
+  }
+}
