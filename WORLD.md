@@ -16,6 +16,14 @@ Diagnostics: data-world-ready/progress/frame-ms/draw-calls/triangles plus data-g
 
 ## Previous illustrative version (historical record)
 
+### Version 2 verification — 1 November 2026
+
+All 35 unit/backend/desktop tests passed, including green-red-green unlock, 10,000-day timeline, unknown activity handling, historical edits, new sports/travel persistence and legacy backup compatibility. The existing 10 browser regression checks and 9 dedicated Growth World checks passed with zero browser errors or failed requests. Dedicated QA uses isolated synthetic histories ending 1 February 2027; no sample history is written to the installed profile.
+
+Fresh captures demonstrate Seed, early Sprout with an anchored earned branch, mature lush foliage, dry foliage at the same earned size, recovery, saved-date inspection, explicitly marked mature preview, desktop/tablet/mobile endpoints, paused motion, static mode and WebGL fallback. Scroll and history preserve the canvas. RAF stops after settling, while paused and under reduced motion. Mature frame totals: 64–70 draw calls and 86,050–87,778 triangles, within the <80-call/<100k-triangle target. Observed active RAF intervals of 6.9–7.5 ms are headless browser scheduling, not GPU timings or real mobile-device measurements.
+
+The Windows 1.1.0 installer completed successfully; the installed app passed sandboxed native rendering and clean exit checks, and the Desktop shortcut was preserved. Raw saved record/settings hashes match before and after upgrade. Private configuration is retained and absent from the application archive. Fresh evidence and the guide are in `outputs/growth-v2/` in the originating task; the portable repo test script defaults to `test-results/growth` with a `QA_OUTPUT_DIR` override.
+
 Travel from a seed at soil level, up through the same growing stems, into an unfolding canopy, and finally out to a complete miniature garden. The scene is an illustrative reminder of steady practice; numeric progress always comes from the user's real entries.
 
 Native document scroll owns a reversible camera and growth state. The four chapter links reproduce the same authored views, while daily logging remains a normal DOM action outside the canvas.
