@@ -465,6 +465,8 @@ export default function App() {
             >
               <GrowthWorld
                 entries={entries}
+                today={today}
+                startDate={settings.startDate}
                 onCheckIn={() => go("checkin", today)}
               />
             </Suspense>
@@ -703,7 +705,11 @@ function Dashboard({
               </div>
             }
           >
-            <GardenPreview />
+            <GardenPreview
+              entries={entries}
+              today={today}
+              startDate={settings.startDate}
+            />
           </Suspense>
           <span className="world-coordinate">
             <span /> YOUR PERSONAL GROWTH WORLD
@@ -1726,6 +1732,36 @@ function CheckIn({
                 </label>
               </div>
             )}
+            <div className="joy-checks">
+              <h3>Make room for life, too.</h3>
+              <p>
+                Guitar, sports, or travel—any one of them refreshes your Growth
+                World’s leaves. Leave an answer blank if you haven’t recorded
+                it.
+              </p>
+              <div>
+                <span>
+                  <strong>Played a sport today?</strong>
+                  <small>Anything you count as sports.</small>
+                </span>
+                <YesNo
+                  label="Played sports today"
+                  value={draft.sportsDone ?? null}
+                  onChange={(value) => update({ sportsDone: value })}
+                />
+              </div>
+              <div>
+                <span>
+                  <strong>Travelled or explored today?</strong>
+                  <small>A trip, an outing, or a new place.</small>
+                </span>
+                <YesNo
+                  label="Travelled today"
+                  value={draft.travelDone ?? null}
+                  onChange={(value) => update({ travelDone: value })}
+                />
+              </div>
+            </div>
           </section>
           <div className="checkin-page-navigation">
             <span>

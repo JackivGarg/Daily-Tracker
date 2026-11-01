@@ -10,7 +10,8 @@
     "test": "node --test server/*.test.js src/lib/*.test.js desktop/*.test.cjs",
     "desktop": "electron .",
     "package:desktop": "npm run build && electron-builder --config desktop/electron-builder.cjs --win nsis --x64",
-    "test:ui": "node scripts/ui-smoke.mjs"
+    "test:ui": "node scripts/ui-smoke.mjs",
+    "test:growth": "node scripts/growth-world-smoke.mjs"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.0",

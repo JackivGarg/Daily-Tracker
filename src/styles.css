@@ -20,6 +20,45 @@
   --peach: #dfbe79;
   --purple: #bdabdc;
 }
+.joy-checks {
+  margin-top: 25px;
+  padding-top: 23px;
+  border-top: 1px solid var(--border);
+}
+.joy-checks h3 {
+  font-size: 14px;
+}
+.joy-checks > p {
+  font-size: 11px;
+  margin: 7px 0 6px;
+  max-width: 68ch;
+}
+.joy-checks > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 0 0;
+}
+.joy-checks strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.joy-checks small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+@media (max-width: 580px) {
+  .joy-checks > div {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .joy-checks > p {
+    font-size: 11px;
+  }
+}
 .entry-section[hidden] {
   display: none;
 }

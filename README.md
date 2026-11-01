@@ -4,7 +4,7 @@ A personal Windows app for the habits that matter: nutrition, training, learning
 
 ## Open the app
 
-Install `Momentum-Setup-1.0.0.exe`, then open **Momentum** from the Desktop shortcut or Start menu. The installed app includes its own runtime; you do not need Node, a browser, or terminal commands. Installation is per-user and does not require an administrator account.
+Install `Momentum-Setup-1.1.0.exe`, then open **Momentum** from the Desktop shortcut or Start menu. The installed app includes its own runtime; you do not need Node, a browser, or terminal commands. Installation is per-user and does not require an administrator account. Updating preserves your existing profile, database, and private configuration.
 
 The daily check-in is split across Your Day, Nutrition, Training, Body & Weight, Study & Focus, and Guitar pages. Move between them freely, then select **Save check-in**. You can save a partial day and edit it later. Changing pages inside the check-in keeps your draft; leaving without saving asks first.
 
@@ -64,6 +64,7 @@ npm run desktop
 ```powershell
 npm test
 npm run test:ui
+npm run test:growth
 npm run package:desktop
 ```
 

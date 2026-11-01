@@ -1,4 +1,20 @@
-# The growth garden
+# The living growth garden — version 2
+
+The current world is a deterministic record of real check-ins. Scroll controls camera only; earned progress controls geometry. These rules supersede the illustrative version documented below.
+
+Three consecutive green calendar days unlock growth; day three and each subsequent green day earns one retained point. Red resets the streak and pauses height, never removes earned height. Missing days interrupt a consecutive streak but are unknown, not red or dry. Stages: Seed0, Sprout1, Sapling6, Young tree20, Full-grown tree45. Three workout check-ins earn one branch, capped at twelve visible earned branches. Guitar, sports or travel (any one) restores28 vitality up to100. Three explicitly logged days with all three false are a grace period, then each further explicit dry day loses12 vitality, minimum15. Unknown fields do not create dry days. Vitality affects leaf color, density, curl and droop, never height. Weight, study and calories do not judge plant health.
+
+## Version 2 scene and camera contract
+
+One persistent renderer/scene across all chapters, timeline selections and incoming data. Registries own tapered woody trunk, structural crown, twelve earned branch groups and instanced curved leaves. Existing graphite plinth/ceramic bowl/soil retained. Bark roughness .86, dry leaves ochre #9b7544, lush foliage #4f8e48 through #b5d77b. Shared instancing keeps draw calls below80 and visible triangles below100k. Warm key [5,8,4], hemisphere fill, cool rim [-5,4,-5], one soft shadow map. No downloaded textures or postprocessing. sRGB/ACES exposure1.0.
+
+Native scroll exact state is separate from damped camera state. Chapter endpoints: show-up wide [5,3.8,7] target[0,1.6,0]; strength trunk closeup[3.6,2.8,4.7] target[0,1.9,0]; focus canopy[-4.5,3.6,-4.7] target[0,2.4,0]; whole-garden[6,6.5,8] target[0,1.7,0]. Targets adapt to earned height; mobile authored pullback1.12–1.18 and FOV+6. Seed has a closer composition. Scroll never changes height or foliage.
+
+DOM includes stage/points/streak/vitality overview, complete rules, concrete next actions, chapter navigation, a read-only actual-history slider and clearly labeled mature preview. Preview never updates records and always offers return to own tree. Pause snaps camera and stops breeze; reduced motion does the same. Optional breeze is off initially. Render on demand until state/camera settle; stop hidden/offscreen; static mode and context-loss fallback retain statistics and semantic story. Cleanup removes every owned listener/observer/RAF/ScrollTrigger/material/geometry.
+
+Diagnostics: data-world-ready/progress/frame-ms/draw-calls/triangles plus data-growth-points/vitality/stage and rendered frame count. Budget DPR1.5 desktop/1.25 mobile, one shadow light, no texture downloads. Prior measurements below belong to version1; v2 requires fresh seed/streak/red/restart/branches/lush/dry/timeline/preview/scroll/reduced-motion/fallback evidence. Real hardware GPU/thermal/battery metrics remain unverified.
+
+## Previous illustrative version (historical record)
 
 Travel from a seed at soil level, up through the same growing stems, into an unfolding canopy, and finally out to a complete miniature garden. The scene is an illustrative reminder of steady practice; numeric progress always comes from the user's real entries.
 

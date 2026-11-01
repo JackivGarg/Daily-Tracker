@@ -14,4 +14,6 @@ FORM: seed:e55bbfb0877fa518. New code-led app screen. The user rejected light th
 
 SIGNATURE: Deterministic reversible native-scroll Three.js garden camera journey with semantic chapter controls, actual entry totals, reduced-motion stills, and meaningful WebGL fallback.
 
+GROWTH WORLD REVISION (1 November 2026): Preserve the existing application shell and other pages. Check-ins now govern actual tree geometry; scroll controls camera only. Show stage/points/streak/branches/vitality overview, exact game rules, saved-date history, actionable next steps, clearly marked mature preview, motion pause, optional breeze, and static mode. Three-green-day unlock; retained cumulative height and gym branches; joy restores foliage, only explicit all-No days dry it. Full specification in PRODUCT.md and WORLD.md. This extends the established dark botanical world, with no visual identity replacement.
+
 VERIFICATION: Isolated temporary SQLite fixtures for UI tests; actual Electron/packaged-app smoke tests; no seeded entries in user data. Mechanical detector returned an empty findings list.
