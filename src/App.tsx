@@ -71,20 +71,55 @@ const pageNames: Record<Page, string> = {
   journey: "Growth world",
   settings: "Goals & settings",
 };
-type CheckInPage = "reflection" | "nutrition" | "training" | "body" | "focus" | "guitar";
-const checkInPages: CheckInPage[] = ["reflection", "nutrition", "training", "body", "focus", "guitar"];
-const checkInTitles:Record<CheckInPage,string>={reflection:"A few minutes. Just for you.",nutrition:"Fuel your day.",training:"Build a little stronger.",body:"Your body, over time.",focus:"Make room for focus.",guitar:"Find your rhythm."};
-const pagePaths: Record<Page, string> = {overview:"/dashboard",checkin:"/check-in",insights:"/insights",history:"/history",journey:"/growth",settings:"/settings"};
-function readRoute(){
-  const parts=window.location.pathname.split('/').filter(Boolean);
-  const page=(Object.entries(pagePaths).find(([,path])=>path===`/${parts[0]}`)?.[0] || 'overview') as Page;
-  const section=checkInPages.includes(parts[1] as CheckInPage)?parts[1] as CheckInPage:'reflection';
-  const requestedDate=new URLSearchParams(window.location.search).get('date');
-  const date=requestedDate&&/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)?requestedDate:dateKey();
-  return {page,section,date};
+type CheckInPage =
+  "reflection" | "nutrition" | "training" | "body" | "focus" | "guitar";
+const checkInPages: CheckInPage[] = [
+  "reflection",
+  "nutrition",
+  "training",
+  "body",
+  "focus",
+  "guitar",
+];
+const checkInTitles: Record<CheckInPage, string> = {
+  reflection: "A few minutes. Just for you.",
+  nutrition: "Fuel your day.",
+  training: "Build a little stronger.",
+  body: "Your body, over time.",
+  focus: "Make room for focus.",
+  guitar: "Find your rhythm.",
+};
+const pagePaths: Record<Page, string> = {
+  overview: "/dashboard",
+  checkin: "/check-in",
+  insights: "/insights",
+  history: "/history",
+  journey: "/growth",
+  settings: "/settings",
+};
+function readRoute() {
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  const page = (Object.entries(pagePaths).find(
+    ([, path]) => path === `/${parts[0]}`,
+  )?.[0] || "overview") as Page;
+  const section = checkInPages.includes(parts[1] as CheckInPage)
+    ? (parts[1] as CheckInPage)
+    : "reflection";
+  const requestedDate = new URLSearchParams(window.location.search).get("date");
+  const date =
+    requestedDate && /^\d{4}-\d{2}-\d{2}$/.test(requestedDate)
+      ? requestedDate
+      : dateKey();
+  return { page, section, date };
 }
-function routePath(page:Page,date:string,section:CheckInPage='reflection'){
-  return page==='checkin'?`${pagePaths.checkin}/${section}?date=${date}`:pagePaths[page];
+function routePath(
+  page: Page,
+  date: string,
+  section: CheckInPage = "reflection",
+) {
+  return page === "checkin"
+    ? `${pagePaths.checkin}/${section}?date=${date}`
+    : pagePaths[page];
 }
 const formatDay = (
   date: string,
@@ -99,9 +134,11 @@ const numeric = (value: string) => (value === "" ? null : Number(value));
 export default function App() {
   const [data, setData] = useState<Bootstrap | null>(null);
   const [error, setError] = useState("");
-  const [page, setPage] = useState<Page>(()=>readRoute().page);
-  const [entryDate, setEntryDate] = useState(()=>readRoute().date);
-  const [entrySection,setEntrySection]=useState<CheckInPage>(()=>readRoute().section);
+  const [page, setPage] = useState<Page>(() => readRoute().page);
+  const [entryDate, setEntryDate] = useState(() => readRoute().date);
+  const [entrySection, setEntrySection] = useState<CheckInPage>(
+    () => readRoute().section,
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [toast, setToast] = useState("");
   const [dirty, setDirty] = useState(false);
@@ -116,31 +153,60 @@ export default function App() {
       .catch((e) => setError(e.message));
   useEffect(() => {
     void load();
-    const initial=readRoute();
-    window.history.replaceState({index:0},'',routePath(initial.page,initial.date,initial.section));
+    const initial = readRoute();
+    window.history.replaceState(
+      { index: 0 },
+      "",
+      routePath(initial.page, initial.date, initial.section),
+    );
   }, []);
-  useEffect(()=>{
-    const onPop=()=>{
-      const next=readRoute();
-      const sameCheckIn=page==='checkin'&&next.page==='checkin'&&next.date===entryDate;
-      if(dirty&&!sameCheckIn&&!window.confirm('Leave this check-in? Your unsaved changes will be lost.')){
-        window.history.pushState({index:maxHistory.current},'',routePath(page,entryDate,entrySection));
+  useEffect(() => {
+    const onPop = () => {
+      const next = readRoute();
+      const sameCheckIn =
+        page === "checkin" &&
+        next.page === "checkin" &&
+        next.date === entryDate;
+      if (
+        dirty &&
+        !sameCheckIn &&
+        !window.confirm(
+          "Leave this check-in? Your unsaved changes will be lost.",
+        )
+      ) {
+        window.history.pushState(
+          { index: maxHistory.current },
+          "",
+          routePath(page, entryDate, entrySection),
+        );
         return;
       }
-      if(!sameCheckIn)setDirty(false);
-      setPage(next.page);setEntryDate(next.date);setEntrySection(next.section);setMenuOpen(false);
-      window.scrollTo({top:0,behavior:'instant'});
+      if (!sameCheckIn) setDirty(false);
+      setPage(next.page);
+      setEntryDate(next.date);
+      setEntrySection(next.section);
+      setMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: "instant" });
     };
-    window.addEventListener('popstate',onPop);
-    return()=>window.removeEventListener('popstate',onPop);
-  },[dirty,page,entryDate,entrySection]);
-  useEffect(()=>{document.title=`${pageNames[page]}${page==='checkin'?` · ${entrySection}`:''} — Momentum`;},[page,entrySection]);
-  useEffect(()=>{
-    if(data&&(entryDate<data.settings.startDate||entryDate>data.today)){
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [dirty, page, entryDate, entrySection]);
+  useEffect(() => {
+    document.title = `${pageNames[page]}${page === "checkin" ? ` · ${entrySection}` : ""} — Momentum`;
+  }, [page, entrySection]);
+  useEffect(() => {
+    if (
+      data &&
+      (entryDate < data.settings.startDate || entryDate > data.today)
+    ) {
       setEntryDate(data.today);
-      window.history.replaceState(window.history.state,'',routePath(page,data.today,entrySection));
+      window.history.replaceState(
+        window.history.state,
+        "",
+        routePath(page, data.today, entrySection),
+      );
     }
-  },[data,entryDate,page,entrySection]);
+  }, [data, entryDate, page, entrySection]);
   useEffect(() => {
     const refresh = () => void load();
     window.addEventListener("focus", refresh);
@@ -159,29 +225,35 @@ export default function App() {
     return () => window.removeEventListener("beforeunload", guard);
   }, [dirty]);
   function go(next: Page, date?: string) {
-    const nextDate=date||entryDate;
-    const sameCheckIn=page==='checkin'&&next==='checkin'&&nextDate===entryDate;
+    const nextDate = date || entryDate;
+    const sameCheckIn =
+      page === "checkin" && next === "checkin" && nextDate === entryDate;
     if (
-      dirty && !sameCheckIn &&
+      dirty &&
+      !sameCheckIn &&
       !window.confirm("Leave this check-in? Your unsaved changes will be lost.")
     )
       return;
-    if(!sameCheckIn)setDirty(false);
+    if (!sameCheckIn) setDirty(false);
     setPage(next);
-    setEntrySection('reflection');
+    setEntrySection("reflection");
     setMenuOpen(false);
     if (date) setEntryDate(date);
-    const index=(window.history.state?.index||0)+1;
-    maxHistory.current=index;
-    window.history.pushState({index},'',routePath(next,nextDate));
+    const index = (window.history.state?.index || 0) + 1;
+    maxHistory.current = index;
+    window.history.pushState({ index }, "", routePath(next, nextDate));
     window.scrollTo({ top: 0, behavior: "instant" });
   }
-  function showEntrySection(section:CheckInPage){
+  function showEntrySection(section: CheckInPage) {
     setEntrySection(section);
-    const index=(window.history.state?.index||0)+1;
-    maxHistory.current=index;
-    window.history.pushState({index},'',routePath('checkin',entryDate,section));
-    window.scrollTo({top:0,behavior:'instant'});
+    const index = (window.history.state?.index || 0) + 1;
+    maxHistory.current = index;
+    window.history.pushState(
+      { index },
+      "",
+      routePath("checkin", entryDate, section),
+    );
+    window.scrollTo({ top: 0, behavior: "instant" });
   }
   function updated(entry: Entry) {
     setData((d) =>
@@ -292,7 +364,14 @@ export default function App() {
       <div className="main-shell">
         <header className="topbar">
           <div className="breadcrumb">
-            <button className="icon-button history-back" aria-label="Previous page" disabled={!window.history.state?.index} onClick={()=>window.history.back()}><ChevronLeft size={17}/></button>
+            <button
+              className="icon-button history-back"
+              aria-label="Previous page"
+              disabled={!window.history.state?.index}
+              onClick={() => window.history.back()}
+            >
+              <ChevronLeft size={17} />
+            </button>
             <button
               className="icon-button mobile-menu"
               aria-label="Open navigation"
@@ -1140,8 +1219,8 @@ function CheckIn({
   onDate: (date: string) => void;
   onSaved: (e: Entry) => void;
   onDirty: (d: boolean) => void;
-  section:CheckInPage;
-  onSection:(section:CheckInPage)=>void;
+  section: CheckInPage;
+  onSection: (section: CheckInPage) => void;
 }) {
   const [draft, setDraft] = useState<Entry>(() => structuredClone(entry));
   const [busy, setBusy] = useState(false);
@@ -1180,7 +1259,7 @@ function CheckIn({
       setError(
         "You have an unfinished meal. Add it to the list, or clear those meal fields before saving.",
       );
-      onSection('nutrition');
+      onSection("nutrition");
       return;
     }
     setBusy(true);
@@ -1199,7 +1278,9 @@ function CheckIn({
       setBusy(false);
     }
   }
-  function jump(id: string) {onSection(id as CheckInPage);}
+  function jump(id: string) {
+    onSection(id as CheckInPage);
+  }
   return (
     <>
       <PageHeading
@@ -1234,7 +1315,12 @@ function CheckIn({
             { id: "focus", title: "Study & focus", icon: BookOpen },
             { id: "guitar", title: "Guitar", icon: Guitar },
           ].map((s) => (
-            <button key={s.id} onClick={() => jump(s.id)} aria-current={section===s.id?'page':undefined} className={section===s.id?'active':''}>
+            <button
+              key={s.id}
+              onClick={() => jump(s.id)}
+              aria-current={section === s.id ? "page" : undefined}
+              className={section === s.id ? "active" : ""}
+            >
               <s.icon size={17} />
               {s.title}
               <ChevronRight size={13} />
@@ -1251,7 +1337,7 @@ function CheckIn({
         <div className="checkin-sections">
           <section
             className="entry-section"
-            hidden={section!=='reflection'}
+            hidden={section !== "reflection"}
             ref={(el) => {
               sectionRefs.current.reflection = el;
             }}
@@ -1297,7 +1383,7 @@ function CheckIn({
           </section>
           <section
             className="entry-section"
-            hidden={section!=='nutrition'}
+            hidden={section !== "nutrition"}
             ref={(el) => {
               sectionRefs.current.nutrition = el;
             }}
@@ -1356,7 +1442,14 @@ function CheckIn({
                 ))}
               </div>
             )}
-            <form className="meal-form" onChange={()=>{onDirty(true);setSaved(false);}} onSubmit={addMeal}>
+            <form
+              className="meal-form"
+              onChange={() => {
+                onDirty(true);
+                setSaved(false);
+              }}
+              onSubmit={addMeal}
+            >
               <label className="field meal-name">
                 Meal or food
                 <input
@@ -1428,7 +1521,7 @@ function CheckIn({
           </section>
           <section
             className="entry-section"
-            hidden={section!=='training'}
+            hidden={section !== "training"}
             ref={(el) => {
               sectionRefs.current.training = el;
             }}
@@ -1515,7 +1608,7 @@ function CheckIn({
           </section>
           <section
             className="entry-section"
-            hidden={section!=='body'}
+            hidden={section !== "body"}
             ref={(el) => {
               sectionRefs.current.body = el;
             }}
@@ -1542,7 +1635,7 @@ function CheckIn({
           </section>
           <section
             className="entry-section"
-            hidden={section!=='focus'}
+            hidden={section !== "focus"}
             ref={(el) => {
               sectionRefs.current.focus = el;
             }}
@@ -1582,7 +1675,7 @@ function CheckIn({
           </section>
           <section
             className="entry-section"
-            hidden={section!=='guitar'}
+            hidden={section !== "guitar"}
             ref={(el) => {
               sectionRefs.current.guitar = el;
             }}
@@ -1635,8 +1728,32 @@ function CheckIn({
             )}
           </section>
           <div className="checkin-page-navigation">
-            <span>{checkInPages.indexOf(section)+1} of {checkInPages.length} · Your daily check-in</span>
-            <div><button className="button subtle" disabled={section==='reflection'} onClick={()=>onSection(checkInPages[checkInPages.indexOf(section)-1])}><ChevronLeft size={15}/>Previous</button><button className="button secondary" disabled={section==='guitar'} onClick={()=>onSection(checkInPages[checkInPages.indexOf(section)+1])}>Next page<ChevronRight size={15}/></button></div>
+            <span>
+              {checkInPages.indexOf(section) + 1} of {checkInPages.length} ·
+              Your daily check-in
+            </span>
+            <div>
+              <button
+                className="button subtle"
+                disabled={section === "reflection"}
+                onClick={() =>
+                  onSection(checkInPages[checkInPages.indexOf(section) - 1])
+                }
+              >
+                <ChevronLeft size={15} />
+                Previous
+              </button>
+              <button
+                className="button secondary"
+                disabled={section === "guitar"}
+                onClick={() =>
+                  onSection(checkInPages[checkInPages.indexOf(section) + 1])
+                }
+              >
+                Next page
+                <ChevronRight size={15} />
+              </button>
+            </div>
           </div>
           <div className="save-bar">
             <div>

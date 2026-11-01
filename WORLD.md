@@ -75,3 +75,9 @@ No essential canvas hotspots or pointer camera controls. Touch scroll remains na
 Targets: DPR ≤1.5 desktop /1.25 mobile, <70 draw calls, <100k triangles, one shadowed light, <1 MB lazy compressed 3D JavaScript, no texture downloads, steady frame time ≤25 ms on integrated graphics. First quality reduction lowers DPR to 1 after sustained frame delays. `data-world-ready`, `data-world-progress`, `data-world-frame-ms`, `data-world-draw-calls`, and `data-world-triangles` expose runtime evidence on the stage.
 
 Browser verification belongs to the integrated app: inspect all four chapter endpoints at 1440×900, 768×1024, and 390×844; forward/reverse/anchor/reload/resize; reduced-motion, WebGL failure, and hidden-tab return. Actual hardware GPU time and real mobile thermal behavior remain unverified until measured. No performance target is represented as an observed result.
+
+### Integrated browser verification, 1 November 2026
+
+The QA agent's fresh headless Chrome run passed all ten exercised checks with zero console or page errors. All four chapters and reverse native scroll rendered correctly on desktop, tablet, and mobile. Saved desktop/mobile stage captures show geometry. The reduced-motion focus view and deliberately triggered WebGL context-loss fallback both retained the story, and the closing check-in action worked.
+
+Observed renderer totals were 51–52 draw calls and 22,874–23,162 triangles. The stage's active-RAF interval average was 6.9–7.0 ms in this headless environment; this measures browser frame scheduling, not GPU execution time or real-device performance. No real mobile thermal, battery, or integrated-GPU measurements are claimed. Evidence is in the task's `outputs/Momentum-world-*.png` captures and `outputs/Momentum-QA-report.json`.
