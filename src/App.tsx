@@ -19,6 +19,7 @@ import {
   LoaderCircle,
   Menu,
   Plus,
+  Pyramid,
   Scale,
   Settings2,
   Sparkles,
@@ -56,16 +57,18 @@ import {
 } from "./lib/metrics.js";
 
 const GrowthWorld = lazy(() => import("./components/GrowthWorld"));
+const Priorities = lazy(() => import("./components/Priorities"));
 const GardenPreview = lazy(() =>
   import("./components/GrowthWorld").then((module) => ({
     default: module.GardenPreview,
   })),
 );
 type Page =
-  "overview" | "checkin" | "insights" | "history" | "journey" | "settings";
+  "overview" | "checkin" | "priorities" | "insights" | "history" | "journey" | "settings";
 const pageNames: Record<Page, string> = {
   overview: "Overview",
   checkin: "Daily check-in",
+  priorities: "Daily Priorities",
   insights: "Insights",
   history: "Your history",
   journey: "Growth world",
@@ -92,6 +95,7 @@ const checkInTitles: Record<CheckInPage, string> = {
 const pagePaths: Record<Page, string> = {
   overview: "/dashboard",
   checkin: "/check-in",
+  priorities: "/priorities",
   insights: "/insights",
   history: "/history",
   journey: "/growth",
@@ -107,7 +111,9 @@ function readRoute() {
     : "reflection";
   const requestedDate = new URLSearchParams(window.location.search).get("date");
   const date =
-    requestedDate && /^\d{4}-\d{2}-\d{2}$/.test(requestedDate)
+    requestedDate && /^\d{4}-\d{2}-\d{2}$/.test(requestedDate) &&
+    Number.isFinite(Date.parse(`${requestedDate}T12:00:00Z`)) &&
+    new Date(`${requestedDate}T12:00:00Z`).toISOString().slice(0, 10) === requestedDate
       ? requestedDate
       : dateKey();
   return { page, section, date };
@@ -117,9 +123,9 @@ function routePath(
   date: string,
   section: CheckInPage = "reflection",
 ) {
-  return page === "checkin"
-    ? `${pagePaths.checkin}/${section}?date=${date}`
-    : pagePaths[page];
+  if (page === "checkin") return `${pagePaths.checkin}/${section}?date=${date}`;
+  if (page === "priorities") return `${pagePaths.priorities}?date=${date}`;
+  return pagePaths[page];
 }
 const formatDay = (
   date: string,
@@ -171,7 +177,7 @@ export default function App() {
         dirty &&
         !sameCheckIn &&
         !window.confirm(
-          "Leave this check-in? Your unsaved changes will be lost.",
+          "Leave this page? Your unsaved changes will be lost.",
         )
       ) {
         window.history.pushState(
@@ -224,24 +230,29 @@ export default function App() {
     window.addEventListener("beforeunload", guard);
     return () => window.removeEventListener("beforeunload", guard);
   }, [dirty]);
-  function go(next: Page, date?: string) {
+  function go(next: Page, date?: string, section: CheckInPage = "reflection") {
     const nextDate = date || entryDate;
+    if (page === "priorities" && next === "priorities" && nextDate === entryDate) {
+      setMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
     const sameCheckIn =
       page === "checkin" && next === "checkin" && nextDate === entryDate;
     if (
       dirty &&
       !sameCheckIn &&
-      !window.confirm("Leave this check-in? Your unsaved changes will be lost.")
+      !window.confirm("Leave this page? Your unsaved changes will be lost.")
     )
       return;
     if (!sameCheckIn) setDirty(false);
     setPage(next);
-    setEntrySection("reflection");
+    setEntrySection(section);
     setMenuOpen(false);
     if (date) setEntryDate(date);
     const index = (window.history.state?.index || 0) + 1;
     maxHistory.current = index;
-    window.history.pushState({ index }, "", routePath(next, nextDate));
+    window.history.pushState({ index }, "", routePath(next, nextDate, section));
     window.scrollTo({ top: 0, behavior: "instant" });
   }
   function showEntrySection(section: CheckInPage) {
@@ -255,7 +266,7 @@ export default function App() {
     );
     window.scrollTo({ top: 0, behavior: "instant" });
   }
-  function updated(entry: Entry) {
+  function recordSaved(entry: Entry, message: string) {
     setData((d) =>
       d
         ? {
@@ -264,8 +275,11 @@ export default function App() {
           }
         : d,
     );
+    setToast(message);
+  }
+  function updated(entry: Entry) {
+    recordSaved(entry, "Check-in saved. One more day, recorded.");
     setDirty(false);
-    setToast("Check-in saved. One more day, recorded.");
   }
   if (!data)
     return (
@@ -309,6 +323,7 @@ export default function App() {
             [
               { id: "overview", icon: LayoutDashboard },
               { id: "checkin", icon: Plus },
+              { id: "priorities", icon: Pyramid },
               { id: "insights", icon: Activity },
               { id: "history", icon: CalendarDays },
               { id: "journey", icon: Sprout },
@@ -316,7 +331,7 @@ export default function App() {
           ).map((n) => (
             <button
               key={n.id}
-              onClick={() => go(n.id, n.id === "checkin" ? today : undefined)}
+              onClick={() => go(n.id, n.id === "checkin" || n.id === "priorities" ? today : undefined)}
               className={`nav-link ${page === n.id ? "active" : ""}`}
               aria-current={page === n.id ? "page" : undefined}
             >
@@ -436,6 +451,19 @@ export default function App() {
               section={entrySection}
               onSection={showEntrySection}
             />
+          )}
+          {page === "priorities" && (
+            <Suspense fallback={<p role="status">Opening Daily Priorities…</p>}>
+              <Priorities
+                entry={entries.find((entry) => entry.date === entryDate) || emptyEntry(entryDate)}
+                today={today}
+                settings={settings}
+                onDate={(date) => go("priorities", date)}
+                onDetails={(section) => go("checkin", entryDate, section)}
+                onSaved={(entry) => recordSaved(entry, "Priorities saved.")}
+                onDirty={setDirty}
+              />
+            </Suspense>
           )}
           {page === "insights" && (
             <Insights
