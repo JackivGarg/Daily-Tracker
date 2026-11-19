@@ -16,3 +16,9 @@ The scene contains a graphite plinth and inset rings, three faceted mineral shel
 HTML buttons jump to the tier forms for pointer, touch, and keyboard users. Forms edit the same dated SQLite check-in as the original pages. The scene is decorative and has no exclusive controls. Each tier links to its full check-in for details. The date selector and all edits remain available with a static view.
 
 Geometry and colors are generated locally. The geometry bundle loads on this route only and reuses the project's existing Three.js and GSAP. Budget: 40 draw calls, 10,000 triangles, one shadow map at 1024 square, DPR capped at 1.35 narrow and 1.65 wide. Render on demand and sleep when paused and settled, offscreen, or hidden. Dispose all owned resources and triggers when leaving the route.
+
+## Verification
+
+Chrome 157 on Windows rendered the overview and each tier at 1440×900, 768×1024, and 390×844. The camera reached each authored view in both scroll directions on the same canvas. All tier endpoints used 19 draw calls and 1,440 triangles. The optional pyramid route, scene, and shared libraries add about 236 kB of gzip-compressed assets on a cold build.
+
+The browser checks used a synthetic in-memory profile. They verified date navigation and reload, persistence into the full Training check-in, preservation of unrelated data, a saved-only completion count, render idling, pause and resume, reduced motion, and fallback after context loss. Separate hardware GPU timing and physical mobile testing were outside this run.
