@@ -4,7 +4,7 @@ A personal Windows app for the habits that matter: nutrition, training, learning
 
 ## Open the app
 
-Install `Momentum-Setup-1.1.0.exe`, then open **Momentum** from the Desktop shortcut or Start menu. The installed app includes its own runtime; you do not need Node, a browser, or terminal commands. Installation is per-user and does not require an administrator account. Updating preserves your existing profile, database, and private configuration.
+Install `Momentum-Setup-1.2.0.exe`, then open **Momentum** from the Desktop shortcut or Start menu. The installed app includes its own runtime; you do not need Node, a browser, or terminal commands. Installation is per-user and does not require an administrator account. Updating preserves your existing profile, database, and private configuration.
 
 The daily check-in is split across Your Day, Nutrition, Training, Body & Weight, Study & Focus, and Guitar pages. Move between them freely, then select **Save check-in**. You can save a partial day and edit it later. Changing pages inside the check-in keeps your draft; leaving without saving asks first.
 
@@ -20,6 +20,10 @@ The daily check-in is split across Your Day, Nutrition, Training, Body & Weight,
 - JSON backup export/import. Import validates all records before any changes and merges by date.
 - Separate 3D growth page with reversible native scroll, four camera chapters, reduced-motion support, and WebGL fallback.
 - Growth World now uses your actual check-ins for size, branches, and foliage. Scroll explores the plant; it does not earn progress.
+
+### Daily Priorities
+
+Open **Daily Priorities** from the sidebar. Study forms the base, Gym the middle, and Guitar the tip. Log a day, then click **Save priorities** to light the layers and update the same daily check-in. Any positive study time counts, and Gym and Guitar light up when you record Yes. Use the date picker for past days or the card links for full check-in details such as workout ratings. Scroll or use the tier buttons to change camera views. The page also offers pause and static view.
 
 ### How Growth World changes
 
@@ -65,6 +69,7 @@ npm run desktop
 npm test
 npm run test:ui
 npm run test:growth
+npm run test:priorities
 npm run package:desktop
 ```
 
